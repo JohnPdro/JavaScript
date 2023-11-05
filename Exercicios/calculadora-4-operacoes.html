@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de 4 operações</title>
+</head>
+<body>
+    <h1>Calculadora de 4 operações</h1>
+
+    <script>
+        let entrada1 = prompt("Digite o primeiro valor:")
+        let entrada2 = prompt("Digite o segundo valor:")
+
+        let valor1 = parseFloat(entrada1)
+        let valor2 = parseFloat(entrada2)
+
+        let soma = valor1 + valor2
+        let subtracao = valor1 - valor2
+        let multiplicacao = valor1 * valor2
+        let divisao = valor1 / valor2
+
+        alert("Resultado:\n" +
+        "\nSoma: " + soma +
+        "\nSubtração: " + subtracao +
+        "\nMultiplicação: " + multiplicacao +
+        "\nDivisão: " + divisao)
+
+        console.log(parseFloat(valor1) + parseFloat(valor2))
+        console.log(parseFloat(valor1) - parseFloat(valor2))
+        console.log(parseFloat(valor1) * parseFloat(valor2))
+        console.log(parseFloat(valor1) / parseFloat(valor2))
+
+    </script>
+
+</body>
+</html>

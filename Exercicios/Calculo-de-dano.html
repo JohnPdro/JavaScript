@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculo de Dano</title>
+</head>
+<body>
+    <h1>Calculo de dano</h1> 
+    <script>
+        const nomeprsng1 = prompt("Digite o nome do primeiro personagem")
+        const poder = parseFloat(prompt("Digite o poder do personagem 1: "))
+
+        const nomeprsg2 = prompt("Digite o nome do segundo personagem")
+        let ptsVida = parseFloat(prompt("Digite a quantidade de pontos de vida"))
+        const pdrDefesa = parseFloat(prompt("Digite a quantidade de defesa"))
+        const escudo = prompt("Esse personagem possui escudo? (Sim/Não)")
+
+        // alert("O nome do primeiro personagem é: " + nomeprsng1 +
+        // "\nPoder: " + poder +
+        // "\n" + 
+        // "\nO nome do segundo personagem é: " + nomeprsg2 +
+        // "\nPontos de vida: " + ptsVida +
+        // "\nPontos de defesa: " + pdrDefesa +
+        // "\nPossui escudo: " + escudo)
+
+
+        let danoCausado = 0
+
+        if(poder > pdrDefesa && escudo === "Não"){
+            danoCausado = poder - pdrDefesa
+        }else if (poder > pdrDefesa && escudo === "Sim"){
+            danoCausado = (poder - pdrDefesa) / 2
+        }
+
+        ptsVida -= danoCausado
+
+        alert(nomeprsng1 + " causou " + danoCausado + " pontos de dano em " + nomeprsg2)
+        alert(
+            nomeprsng1 + "\nPoder de ataque: " + poder + "\n\n" +
+            nomeprsg2 + "\nPontos de vida: " + ptsVida +
+            "\nPoder de defesa: " + pdrDefesa + "\nPossui escudo: " + escudo
+        )
+
+        // if(escudo == "não"){
+        //     const danoCausado  = poder - pdrDefesa 
+        //     const danoVida = ptsVida - danoCausado  
+        //     if(danoVida > 0){
+        //         alert("O dano causado foi " + danoCausado)
+        //     }else{
+        //         alert("O dano causado foi 0")
+        //     }
+        // }else if(escudo == "sim"){
+        //     const danoCausado = poder / pdrDefesa
+        //     const danoVida = ptsVida - danoCausado
+        //     if(danoVida > 0){
+        //         alert("O dano causado foi " + danoCausado)
+        //     }else{
+        //         alert("O dano causado foi 0")
+        //     }
+        // }
+    </script>
+</body>
+</html>
