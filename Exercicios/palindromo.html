@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindromo</title>
+</head>
+<body>
+    <h1>Palindromo</h1>
+    <script>
+        const palavra = prompt("Informe uma palvara:")
+        let palavraInvertida = ""
+
+        for(let i = palavra.length - 1; i >= 0; i--){
+            palavraInvertida += palavra[i]
+        }
+
+        if (palavra === palavraInvertida){
+            alert(palavra + " é um palindromo!")
+        }else{
+            alert(
+            palavra + " não é um palíndromo!\n\n" +
+            palavra + " !== " + palavraInvertida)
+        }
+    </script>
+</body>
+</html>

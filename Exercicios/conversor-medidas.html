@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=l, initial-scale=1.0">
+    <title>Conversor de Medidas</title>
+</head>
+<body>
+    <h1>Conversor de medida</h1>
+    <script>
+        const metro = parseFloat(prompt("Digite em metros a medida desejada:"))
+
+        const medida = prompt("Escolha o tipo de medida para a conversão: \n(mm)\n(cm)\n(dm)\n(dam)\n(hm)\n(km)")
+
+        switch (medida){
+            case ("mm") :
+                alert("O valor da conversão em milímetro é " + metro * 1000 + "mm")
+                break
+            case ("cm") :
+                alert("O valor da conversão em milímetro é " + metro * 100 + "cm")
+                break
+            case ("dm") :
+                alert("O valor da conversão em milímetro é " + metro * 10 + "dm")
+                break
+            case ("dam") :
+                alert("O valor da conversão em milímetro é " + metro / 10 + "dam")
+                break
+            case ("hm") :
+                alert("O valor da conversão em milímetro é " + metro / 100 + "hm")
+                break
+            case ("km") :
+                alert("O valor da conversão em milímetro é " + metro / 1000 + "km")
+                break
+            default:
+                alert("Valor inválido...")
+        }
+    </script>
+</body>
+</html>
