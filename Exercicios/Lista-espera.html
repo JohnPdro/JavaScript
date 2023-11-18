@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Espera</title>
+</head>
+
+<body>
+    <h1>Lista de espera</h1>
+    <script>
+        let fila = []
+        let opcao = ""
+
+        do {
+            let pacientes = ""
+            for (let i = 0; i < fila.length; i++){
+                pacientes += (i + 1) + "º -  " + fila[i] +"\n"
+            }
+
+            opcao = prompt("Seja bem vindo!! \n" +
+                "\nVaja abaixo a lista de pacientes" +
+                "\n" + pacientes + 
+                "\n Escolha uma ação:" +
+                "\n 1. Adicionar novo paciente" +
+                "\n 2. Consultar paciente" +
+                "\n 3. Sair")
+
+                switch (opcao) {
+                    case "1":
+                        let novoPaciente = prompt("Qual o nome do paciente?")
+                        fila.push(novoPaciente)
+                        break
+                    case "2":
+                        const pacienteConsultado = fila.shift()
+                        if(pacienteConsultado){
+                            alert(pacienteConsultado + " foi removido da fila.")        
+                        }else("Não há pacientes na fila!")
+                        break
+                    case "3":
+                        alert("Saindo")
+                        break
+                    default:
+                        alert("Opçao invalida")
+            }
+        }while(opcao !== "3")
+    </script>
+</body>
+
+</html>
