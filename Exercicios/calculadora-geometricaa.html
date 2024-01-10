@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Geométrica</title>
+</head>
+<body>
+    <h1>Calculadora Geométrica</h1>
+    <script>
+        function calcularSoma(){
+            const valor1 = parseFloat(prompt("Digite um núemro:"))
+            const valor2 = parseFloat(prompt("Digite outro núemro:"))
+            return valor1 + valor2
+        }
+
+        function calcularSubtracao(){
+            const valor1 = parseFloat(prompt("Digite um número:"))
+            const valor2 = parseFloat(prompt("Digite outro número:"))
+            return valor1 - valor2
+        }
+
+        function exibirMenu(){
+            return prompt("Calculadora Básico \n " +
+            "\n 1.Soma" +
+            "\n 2.Subtração" +
+            "\n 3.Sair")
+        }
+
+        function executar(){
+            let opcao = ""
+            
+            do {
+                opcao = exibirMenu()
+                let resultado 
+
+                switch (opcao){
+                    case "1":
+                        resultado = calcularSoma()
+                        break
+                    case "2":
+                        resultado = calcularSubtracao()
+                        break
+                    case "3":
+                        alert("Saindo...")
+                        break
+                    default:
+                        alert("Opção invalida!!")                        
+                }
+                
+                if (resultado){
+                    alert("Resultado " + resultado)
+                }
+                
+            }while (opcao !== "3")
+        }
+
+        executar()
+    </script>
+</body>
+</html>
