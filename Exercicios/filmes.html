@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filme</title>
+</head>
+<body>
+    <h1>Filmes</h1>
+    <script>
+        const filmes = []
+
+        function novoFilme(){
+            const nome = prompt("Digite um filme que você gostaria de adicionar: ")
+            const descricao = prompt("Digite uma descrição sobre o filme: ")
+            const dataLancamento = prompt("Digite a data de lançamento: ")
+
+            const confirmacao = confirm(
+                "Você gostaria de salvar essas informações?\n" +
+                "Nome:" + nome + "\nDescrição:" + descricao + "\nData de lançamento:" + dataLancamento
+            )
+
+            if (confirmacao) {
+                const novoFilme = {nome, descricao, dataLancamento, locadores:[]}
+                filmes.push(novoFilme)
+                alert("Filme criada.")
+            } 
+        }
+
+        function listarFilmes(){
+            const filmesEmTexto = filmes.reduce(function(textoFinal, filme, indice){
+                textoFinal += indice + " - "
+                textoFinal += filme.nome
+                textoFinal += " (" + filme.locadores.length + " locadores)\n"
+                return textoFinal
+            }, "")
+
+            alert(filmesEmTexto)
+        }
+
+        function exibirFilme(){
+            const indice = prompt("Digite o indice do filme que deseja ver: ")
+
+            if (indice >= filmes.length || indice < 0){
+            alert("Indice inválido")
+            return
+            }
+
+            const filme = filmes[indice]
+
+            const locadorEmTexto = filme.locadores.reduce(function(textoFinal, locador){
+                return textoFinal + "\n - " + locador        
+            }, "")
+
+            alert(
+                "Filme nº" + indice +
+                "\nNome do filme: " + filme.nome +  
+                "\nDescrição: " + filme.descricao +
+                "\nData de lançamento: " + filme.dataLancamento +
+                "\nQuantidade de locadores: " + filme.locadores.length +
+                "\nLocadores inscritos: " + locadorEmTexto
+            )
+        }
+
+        function inscreverLocador(){
+            const locador = prompt("Qual é o nome do locador?")
+            const indice = prompt("Informe o indice do filme que o locador deseja locar:")
+            const filme = filmes[indice]
+
+            const confirmacao = confirm(
+                "Deseja inscrever o candidato " + locador + " na vaga " + indice + "?\n" +
+                "Nome: " + filme.nome + "\nDescrição: " + filme.descricao + "\nData lançamento:" + filme.dataLancamento
+            )
+
+            if (confirmacao) {
+                filme.locadores.push(locador)
+                alert("Inscrição realizada.")
+            }
+        }
+
+        function excluirFilme(){
+            const indice = prompt("Informe o indice do filme que deseja excluir")
+            const filme = filmes[indice]
+
+            const confirmacao = confirm(
+                "Tem certeza que desja excluir o filme no indice " + indice + "?\n" +
+                "Nome:" + filme.nome + "\nDescrição:" + filme.descricao + "\nData de lançamento:" + filme.dataLancamento  
+            )
+
+            if(confirmacao){
+                filmes.splice(indice, 1)
+                alert("Filme excluido.")
+            }
+        }
+
+        function exibirMenu(){
+            const opcao = prompt(
+                "Cadastro de filmes" +
+                "\n\nEscolha uma das opções"+
+                "\n1. Adicionar um novo filme" +
+                "\n2. Listar filmes" +
+                "\n3. Visualizar filmes" +
+                "\n4. Inscrever uma locador" +
+                "\n5. Excluir um filme" +
+                "\n6. Sair"
+            )
+
+            return opcao
+        }
+
+        function executar(){
+            let opcao = ""
+
+            do{ 
+                opcao = exibirMenu()
+
+                switch(opcao){
+                    case "1":
+                        novoFilme()
+                        break
+                    case "2":
+                        listarFilmes()
+                        break
+                    case "3":
+                        exibirFilme()
+                        break
+                    case "4":
+                        inscreverLocador()
+                        break
+                    case "5": 
+                        excluirFilme()
+                        break
+                    case "6":
+                        alert("Saindo...")
+                        break
+                    default:
+                        alert("Informação invalida.")
+                }
+            }while (opcao !== "6")  
+        }
+
+        executar()
+
+    </script>
+</body>
+</html>

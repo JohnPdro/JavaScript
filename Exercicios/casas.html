@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veivulo</title>
+</head>
+<body>
+    <h1>Veivulo</h1>
+    <script>
+        const veiculos = []
+
+        function novoVeiculo(){
+            const nome = prompt("Digite o nome do veiculo:")
+            const descricao = prompt("Fala um pouco sobre o veiculo:")
+            const dataLancamento = prompt("Informe o ano de lançamento:")
+
+            const confirmacao = confirm(
+                "Você gostaria de salvar essas informações?\n" +
+                "Nome:" + nome + "\nDescrição:" + descricao + "\nData lancamento:" + dataLancamento
+            )
+
+            if(confirmacao){
+                const novoVeiculo = {nome, descricao, dataLancamento, donos:[]}
+                veiculos.push(novoVeiculo)
+                alert("Veiculo salvo")
+            }
+        }
+
+        function listarVeiculos(){
+            const veiculoEmTexto = veiculos.reduce(function(textoFinal, veiculo, indice){
+                textoFinal += indice + ". "
+                textoFinal += veiculo.nome
+                textoFinal += "(" + veiculo.donos.length + " donos)\n"        
+                return textoFinal
+            }, "")
+
+            alert(veiculoEmTexto)
+        }
+
+        function exibirVeiculo(){
+            const indice = prompt("Digite o indice do veiculo que deseja ver:")
+
+            if (indice >= veiculos.length || indice < 0){
+                alert("Indice invalido")
+                return
+            }
+
+            const veiculo = veiculos[indice]
+
+            const donosEmTexto = veiculo.donos.reduce(function(textoFinal, dono){
+                return textoFinal + "\n - " + dono
+            }, "")
+
+            alert(
+                "Veiculo º" + indice +
+                "\nNome:" + veiculo.nome +
+                "\nDescrição:" + veiculo.descricao +
+                "\nData de lançamento:" + veiculo.dataLancamento +
+                "\nQuantidade de donos:" + veiculo.donos.length +
+                "\nQuantidade de donos inscritos:" + donosEmTexto
+            )
+        }
+
+        function inscreverDono(){
+            const dono = prompt("Digite o nome do dono:")
+            const indice = prompt("Digite o indice do veiculo desejado:")
+            const veiculo = veiculos[indice]
+
+            const confirmacao = confirm(
+                "Tem certeza que deseja selecionar o indice " + indice +
+                "\nNome:" + veiculo.nome + "\nDescrição:" + veiculo.descricao + "\nData de lançamento:" + veiculo.dataLancamento 
+            )
+
+            if (confirmacao){
+                veiculo.donos.push(dono)
+                alert("Registro concluido")
+            }
+        }
+
+        function excluirVeiculo(){
+            const indice = prompt("Digite o número do indice que deseja excluir:")
+            const veiculo = veiculos[indice]
+
+            const confirmacao = confirm(
+                "Tem certeza que deseja excluir o veiculo no indice " + indice +"? \n" +
+                "Nome:" + veiculo.nome + "\nDescrição:" + veiculo.descricao + "\nData de lançamento:" + veiculo.dataLancamento
+            )
+
+            if (confirmacao){
+                veiculos.splice(indice, 1)
+                alert("Veiculo excluido")
+            }
+        }
+
+        function exibirMenu(){
+            const opcao = prompt(
+                "Tabela de veiculos\n" +
+                "\n\nSelecione uma opção"+
+                "\n1. Adicionar um novo veículo"+
+                "\n2. Listar veiculos" +
+                "\n3. Visualisar veiculo" +
+                "\n4. Inscrever um locador" +
+                "\n5. Excluir veiculo" +
+                "\n6. Sair" 
+            )
+
+            return opcao
+        }
+
+        function executar(){
+            let opcao = ""
+
+            do{
+                opcao = exibirMenu()
+                
+                switch(opcao){
+                    case "1":
+                        novoVeiculo()
+                        break
+                    case "2":
+                        listarVeiculos()
+                        break
+                    case "3":   
+                        exibirVeiculo()
+                        break
+                    case "4":
+                        inscreverDono()
+                        break
+                    case "5":
+                        excluirVeiculo()
+                        break
+                    case "6":
+                        alert("Saindo...")
+                        break
+                    default:
+                        alert("Informação invalida")
+                }
+            }while (opcao !== "6")
+        }
+
+        executar()
+
+    </script>
+</body>
+</html>
