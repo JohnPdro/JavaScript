@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App de Namoro</title>
+</head>
+<body>
+    <h1>App de Namoro</h1>
+    <script>
+        const candidatos = []
+
+        function novoCandidato(){
+            const nome = prompt("Escreva o nome do candidato:")
+            const descricao = prompt("Fala um pouco sobre o candidato:")
+            const idade = prompt("Informe a idade do candidato:")
+
+            const confirmacao = confirm(
+                "Deseja salvar as informações? \n" +
+                "Nome:" + nome + "\nDescrição:" + descricao + "\nIdade:" + idade
+            )
+
+            if(confirmacao){
+                const novoCandidato = {nome, descricao, idade, interessados:[]}
+                candidatos.push(novoCandidato)
+                alert("Candidato registrado")
+            }
+
+        }
+
+        function listarCandidatos(){
+            const candidatoEmTexto = candidatos.reduce(function(textoFinal, candidato, indice){
+                textoFinal += indice + " - "
+                textoFinal += candidato.nome
+                textoFinal +=  " (" + candidato.interessados.length + " interessados)"
+                return textoFinal
+            }, "")
+
+            alert(candidatoEmTexto)
+        }
+
+        function exibirCandidato(){
+            const indice = prompt("Digite o indice do candidato que deseja exibir:")
+
+            if(indice >= candidatos.length || indice < 0){
+                alert("Indice invalido")
+                return
+            }
+
+            const candidato = candidatos[indice]
+
+            const interessadosEmTexto = candidato.interessados.reduce(function(textoFinal, interessado){
+                return textoFinal + "\n - " + interessado
+            }, "")
+
+            alert(
+                "Candidato nº" + indice +
+                "\nNome do candidato:" + candidato.nome +
+                "\nDescrição do candidato:" + candidato.descricao +
+                "\nIdade do candidato:" + candidato.idade +
+                "\nQuantidade de interessados:" + candidato.interessados.length +
+                "\nNome dos interessados:" + interessadosEmTexto
+            )
+        }
+
+        function inscreverInteresado(){
+            const interessado = prompt("Digite o nome:")
+            const indice = prompt("Informe o indice de interesse:")
+            const candidato = candidatos[indice]
+
+            const confirmacao = confirm(
+                "Deseja inscrever " + interessado + " no candidato " + indice + "?\n" +
+                "Nome:" + candidato.nome + "\nDescrição:" + candidato.descricao + "\nIdade:" + candidato.idade
+            )
+
+            if(confirmacao){
+                candidato.interessados.push(interessado)
+                alert("Inscrição realizada")
+            }
+        }
+
+        function excluirCandidato(){
+            const indice = prompt("Digite o indice do candidato que deseja excluir:")
+            const candidato = candidatos[indice]
+
+            const confirmacao = confirm(
+                "Deseja excluir o candidato " + indice + "?\n" +
+                "Nome:" + candidato.nome + "\nDescrição:" + candidato.descricao + "\nIdade:" + candidato.idade
+            )
+
+            if (confirmacao){
+                candidatos.splice(indice, 1)
+                alert("Candidato deletado")
+            }
+        }
+
+        function exibirMenu(){
+            const opcao = prompt(
+                "Cadastro de candidatos" +
+                "\n\n Escolha uma das opções" +
+                "\n1. Adicionar um novo candidato" +
+                "\n2. Listar candidatos" +
+                "\n3. Visualizar candidatos" +
+                "\n4. Inscrever um interessado" +
+                "\n5. Excluir um candidato" +
+                "\n6. Sair"
+            )
+
+            return opcao
+        }
+
+        function executar(){
+            let opcao = ""
+
+            do{
+                opcao = exibirMenu()
+                switch(opcao){
+                    case "1":
+                        novoCandidato()
+                        break
+                    case "2":
+                        listarCandidatos()
+                        break
+                    case "3":
+                        exibirCandidato()
+                        break
+                    case "4":
+                        inscreverInteresado()
+                        break
+                    case "5":
+                        excluirCandidato()
+                        break
+                    case "6":
+                        alert("Saindo...")
+                        break
+                    default:
+                        alert("Informação invalida")
+                }
+            }while (opcao !== "6")
+        }
+
+        executar()
+    </script>
+</body>
+</html>
