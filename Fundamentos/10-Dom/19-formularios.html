@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formularios</title>
+    <script src="19-formularios.js" defer></script>
+</head>
+<body>
+    <h1>Trabalhando com formulários</h1>
+    <hr>
+    <h2>Montar Pedido</h2>
+    <br>
+    <form action="" id="orderForm">
+        <label for="nome">Nome:</label>
+        <br>
+        <input type="text" name="nome" id="nome">
+        <br>
+
+        <label for="endereco">Endereço de Entrega</label>
+        <br>
+        <input type="text" name="endereco" id="endereco">
+        <br>
+
+        <label for="tipoPao">Tipo de Pão</label>
+        <br>
+        <select name="tipoPao" id="tipoPao">
+            <option value="vazio"></option>
+            <option value="4 Queijo">4 Queijo</option>
+            <option value="12-graos">12 Grãos</option>
+            <option value="italiano">Italiano Branco</option>
+        </select>
+        <br>
+
+        <input type="radio" name="opcoesCarne" id="carne" value="Carne">
+        <label for="carne">Carne</label>
+        <input type="radio" name="opcoesCarne" id="frango" value="Frango">
+        <label for="frango">Frango</label>
+        <input type="radio" name="opcoesCarne" id="vegano" value="Vegano">
+        <label for="vegano">Vegano</label>
+        <br>
+
+        <input type="checkbox" name="salada" id="alface" value="Alface">
+        <label for="alface">Alface</label>
+        <input type="checkbox" name="salada" id="tomate" value="Tomate">
+        <label for="tomate">Tomate</label>
+        <input type="checkbox" name="salada" id="azeitona" value="Azeitona">
+        <label for="azeitona">Azeitona</label>
+        <input type="checkbox" name="salada" id="cenoura" value="Cenoura">
+        <label for="cenoura">Cenoura</label>
+        <input type="checkbox" name="salada" id="picles" value="Picles">
+        <label for="picles">Picles</label>
+        <br>
+
+        <label for="observacao">Observação:</label>
+        <br>
+        <textarea name="observacao" id="observacao" cols="30" rows="6"></textarea>
+
+        <br><br>
+        <button type="submit">Fechar Pedido</button>
+    </form>
+</body>
+</html>
